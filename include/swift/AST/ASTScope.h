@@ -17,6 +17,7 @@
 #ifndef SWIFT_AST_AST_SCOPE_H
 #define SWIFT_AST_AST_SCOPE_H
 
+#include "swift/AST/ASTContext.h"
 #include "swift/AST/ASTNode.h"
 #include "swift/Basic/LLVM.h"
 #include "swift/Basic/SourceManager.h"
@@ -632,7 +633,8 @@ public:
   // Only allow allocation of scopes using the allocator of a particular source
   // file.
   void *operator new(size_t bytes, const ASTContext &ctx,
-                     unsigned alignment = alignof(ASTScope));
+                     unsigned alignment = alignof(ASTScope),
+                     AllocationArena arena = AllocationArena::Permanent);
   void *operator new(size_t Bytes, void *Mem) {
     assert(Mem);
     return Mem;

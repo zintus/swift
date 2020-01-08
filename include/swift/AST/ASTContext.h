@@ -124,7 +124,9 @@ enum class AllocationArena {
   /// lifetime of a particular instance of the constraint solver.
   ///
   /// Any type involving a type variable is allocated in this arena.
-  ConstraintSolver
+  ConstraintSolver,
+
+  Declarations
 };
 
 /// Lists the set of "known" Foundation entities that are used in the

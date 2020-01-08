@@ -2104,7 +2104,8 @@ void ASTScope::dump() const {
 }
 
 void *ASTScope::operator new(size_t bytes, const ASTContext &ctx,
-                             unsigned alignment) {
-  return ctx.Allocate(bytes, alignment);
+                             unsigned alignment,
+                             AllocationArena arena) {
+  return ctx.Allocate(bytes, alignment, arena);
 }
 
